@@ -73,7 +73,7 @@ if(isset($_POST['client_id'])){
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Login Bellow</h1>
+                            <h1></h1>
                          
                         </div>
                     </div>
@@ -85,7 +85,7 @@ if(isset($_POST['client_id'])){
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>please enter your login information to get started</p>
+                        <p>enter id to view registered cars</p>
                         <div class="my-5">
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -99,7 +99,7 @@ if(isset($_POST['client_id'])){
             <div class="form-input">
                 <input type="text" name="client_id" placeholder="Enter client id"/>  
             </div>
-            <input type="submit" type="submit" value="LOGIN" class="btn-login"/>
+            <input type="submit" type="submit" value="Enter" class="btn-login"/>
         </form>
     </div>
                         </div>
