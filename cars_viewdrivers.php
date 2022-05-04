@@ -61,6 +61,7 @@ if(isset($_POST['car_id'])){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cars.php">Back</a></li>
 
                     </ul>
                 </div>
@@ -72,7 +73,8 @@ if(isset($_POST['car_id'])){
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Login Bellow</h1>
+                            
+                           
                          
                         </div>
                     </div>
@@ -84,7 +86,7 @@ if(isset($_POST['car_id'])){
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>please enter your login information to get started</p>
+                        <p>please enter your vehicle id</p>
                         <div class="my-5">
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -98,7 +100,8 @@ if(isset($_POST['car_id'])){
             <div class="form-input">
                 <input type="text" name="car_id" placeholder="Enter car id"/>  
             </div>
-            <input type="submit" type="submit" value="LOGIN" class="btn-login"/>
+            <input type="submit" type="submit" value="Enter" class="btn-login"/>
+            <div> <?php echo $error; ?></div>
         </form>
     </div>
                         </div>
@@ -107,60 +110,7 @@ if(isset($_POST['car_id'])){
             </div>
         </main>
 
-        <style>
-table {
-border-collapse: collapse;
-width: 100%;
-color: #588c7e;
-font-family: monospace;
-font-size: 25px;
-text-align: left;
-}
-th {
-background-color: #588c7e;
-color: white;
-}
-tr:nth-child(even) {background-color: #f2f2f2}
-</style>
-</head>
-<body>
-<table>
-<tr>
-<th>Id</th>
-<th>Username</th>
-<th>Password</th>
-</tr>
-<?php
-$error = "";
-
-$servername = "localhost";
-$username = "root";
-$password = null;
-$db_database = "final_proj";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db_database);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-
-$sql = "SELECT id, fullname, email FROM clients";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["id"]. "</td><td>" . $row["fullname"] . "</td><td>"
-. $row["email"]. "</td></tr>";
-}
-echo "</table>";
-} else { echo "0 results"; }
-$conn->close();
-?>
-</table>
+        
 
 
         <!-- Footer-->
