@@ -1,8 +1,39 @@
 <?php
 session_start();
 
+$servername = "localhost";
+$username = "root";
+$password = null;
+$db_database = "final_proj";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $db_database);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
 $employee_id=$_SESSION['employee_id'];
 $branch_id=$_SESSION['branch_id'];
+
+
+    $sql = "SELECT fullname FROM employees WHERE id=?"; // SQL with parameters
+    $stmt = $conn->prepare($sql); 
+    $stmt->bind_param("i", $employee_id);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    $user_id2 = $result->fetch_assoc(); // fetch data 
+    $emplyee_name = strval(reset($user_id2));
+
+
+    $sql = "SELECT city FROM branch WHERE id=?"; // SQL with parameters
+    $stmt = $conn->prepare($sql); 
+    $stmt->bind_param("i", $branch_id);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    $user_id2 = $result->fetch_assoc(); // fetch data 
+    $branch_name = strval(reset($user_id2));
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +69,7 @@ $branch_id=$_SESSION['branch_id'];
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="add_car.php">register vehicle</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="clients.php">clients</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cars.php">vehicles</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.php">logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,8 +80,8 @@ $branch_id=$_SESSION['branch_id'];
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>About Me</h1>
-                            <span class="subheading">This is what I do.</span>
+                            <h1>logged in as <?php echo $emplyee_name; ?></h1>
+                            
                         </div>
                     </div>
                 </div>
@@ -60,9 +92,10 @@ $branch_id=$_SESSION['branch_id'];
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+                        <p>employee id: <?php echo $employee_id; ?></p>
+                        <p>employee name: <?php echo $emplyee_name; ?></p>
+                        <p>employee branch id: <?php echo $branch_id; ?></p>
+                        <p>employee branch name: <?php echo $branch_name; ?></p>
                     </div>
                 </div>
             </div>
