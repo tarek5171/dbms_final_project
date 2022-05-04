@@ -59,7 +59,7 @@ if(isset($_POST['client_id'])){
         exit();
     }
     else{
-        $error="incorect username or password";
+        $error="cannot update vehicle ownership if not registered in your branch";
         
     }
     
@@ -97,6 +97,7 @@ if(isset($_POST['client_id'])){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cars.php">Back</a></li>
 
                     </ul>
                 </div>
@@ -108,7 +109,7 @@ if(isset($_POST['client_id'])){
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Enter Client Info</h1>
+                            <h1></h1>
                          
                         </div>
                     </div>
@@ -120,7 +121,7 @@ if(isset($_POST['client_id'])){
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>please enter your login information to get started</p>
+                        <p>please enter car id and the new owner client id to change to</p>
                         <div class="my-5">
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -137,8 +138,9 @@ if(isset($_POST['client_id'])){
             <div class="form-input">
                 <input type="text" name="car_id" placeholder="enter car id"/>
             </div>
-            <p>category number: 1=suv, 2=sedan, 3=coupe</p>
-            <input type="submit" type="submit" value="Add Client" class="btn-login"/>
+            <div> <?php echo $error; ?></div>
+            
+            <input type="submit" type="submit" value="Update" class="btn-login"/>
         </form>
     </div>
                         </div>
