@@ -46,8 +46,8 @@ $employee_id=$_SESSION['employee_id']
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>About Me</h1>
-                            <span class="subheading">This is what I do.</span>
+                            <h1>registered vehicles</h1>
+                            <span class="subheading"></span>
                         </div>
                     </div>
                 </div>
@@ -74,10 +74,12 @@ tr:nth-child(even) {background-color: #f2f2f2}
 <table>
 <tr>
 <th>Id</th>
-<th>Username</th>
-<th>Password</th>
-<th>category number</th>
+<th>model_name</th>
+<th>model_year</th>
+<th>category_number</th>
+<th>branch_number</th>
 </tr>
+<p>category number: 1=suv, 2=sedan, 3=coupe</p>
 <?php
 $error = "";
 
@@ -95,14 +97,14 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT id, model_name, model_year,category_id FROM cars";
+$sql = "SELECT cars.id, cars.model_name, cars.model_year,cars.category_id,car_reg.branch_id FROM cars,car_reg WHERE cars.id = car_reg.car_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["id"]. "</td><td>" . $row["model_name"] . "</td><td>"
-. $row["model_year"] . "</td><td>". $row["category_id"]. "</td></tr>";
+. $row["model_year"] . "</td><td>" . $row["category_id"] . "</td><td>". $row["branch_id"]. "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
