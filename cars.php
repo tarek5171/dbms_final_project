@@ -41,7 +41,7 @@ $employee_id=$_SESSION['employee_id']
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -78,6 +78,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
 <th>model_year</th>
 <th>category_number</th>
 <th>branch_number</th>
+<th>registration cost</th>
 </tr>
 <p>category number: 1=suv, 2=sedan, 3=coupe</p>
 <?php
@@ -97,14 +98,14 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT cars.id, cars.model_name, cars.model_year,cars.category_id,car_reg.branch_id FROM cars,car_reg WHERE cars.id = car_reg.car_id";
+$sql = "SELECT cars.id, cars.model_name, cars.model_year,cars.category_id,car_reg.branch_id,category.r_cost FROM cars,car_reg,category WHERE cars.id = car_reg.car_id AND cars.category_id = category.id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["id"]. "</td><td>" . $row["model_name"] . "</td><td>"
-. $row["model_year"] . "</td><td>" . $row["category_id"] . "</td><td>". $row["branch_id"]. "</td></tr>";
+. $row["model_year"] . "</td><td>" . $row["category_id"] . "</td><td>". $row["branch_id"] . "</td><td>" . $row["r_cost"]. "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
