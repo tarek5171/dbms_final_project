@@ -26,6 +26,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cars.php">Back</a></li>
 
                     </ul>
                 </div>
@@ -37,7 +38,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Login Bellow</h1>
+                            <h1>registered drivers</h1>
                          
                         </div>
                     </div>
@@ -66,8 +67,8 @@ tr:nth-child(even) {background-color: #f2f2f2}
 <table>
 <tr>
 <th>Id</th>
-<th>Username</th>
-<th>Password</th>
+<th>fullname</th>
+<th>phone</th>
 </tr>
 <?php
 session_start();
@@ -94,7 +95,7 @@ if ($conn->connect_error) {
 
 
 
-    $sql = "SELECT clients.id, clients.fullname, clients.age FROM driver_reg, clients WHERE driver_reg.client_id = clients.id AND driver_reg.car_id = ?"; // SQL with parameters
+    $sql = "SELECT clients.id, clients.fullname, clients.phone FROM driver_reg, clients WHERE driver_reg.client_id = clients.id AND driver_reg.car_id = ?"; // SQL with parameters
     $stmt = $conn->prepare($sql); 
     $stmt->bind_param("i", $_SESSION['car_vd_id']);
     $stmt->execute();
@@ -104,7 +105,7 @@ if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr><td>" . $row["id"]. "</td><td>" . $row["fullname"] . "</td><td>"
-. $row["age"]. "</td></tr>";
+. $row["phone"]. "</td></tr>";
 }
 echo "</table>";
 } else { echo "0 results"; }
