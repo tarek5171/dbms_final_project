@@ -90,6 +90,7 @@ if(isset($_POST['client_id'])){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php">Home</a></li>
 
                     </ul>
                 </div>
@@ -101,7 +102,7 @@ if(isset($_POST['client_id'])){
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Enter Client Info</h1>
+                            <h1></h1>
                          
                         </div>
                     </div>
@@ -113,7 +114,7 @@ if(isset($_POST['client_id'])){
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>please enter your login information to get started</p>
+                        <p>please enter the info to register car</p>
                         <div class="my-5">
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
