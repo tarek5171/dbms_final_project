@@ -44,8 +44,8 @@ $employee_id=$_SESSION['employee_id']
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>About Me</h1>
-                            <span class="subheading">This is what I do.</span>
+                            <h1>registered clients</h1>
+                            <span class="subheading"></span>
                         </div>
                     </div>
                 </div>
@@ -72,8 +72,8 @@ tr:nth-child(even) {background-color: #f2f2f2}
 <table>
 <tr>
 <th>Id</th>
-<th>Username</th>
-<th>Password</th>
+<th>fullname</th>
+<th>email</th>
 </tr>
 <?php
 $error = "";
@@ -94,6 +94,8 @@ if ($conn->connect_error) {
 
 $sql = "SELECT id, fullname, email FROM clients";
 $result = $conn->query($sql);
+
+
 
 if ($result->num_rows > 0) {
 // output data of each row
